@@ -3,10 +3,10 @@ import { login, register, loginRequired } from '../controllers/authController.js
 
 const routes = (app) => {
     //Restricted routes, you have to login first
-    app.route('/comment')
+    app.route('/comment/:id')
         .post(loginRequired, makeComment)
 
-    app.route('/post')
+    app.route('/post/:id')
         .post(loginRequired, makePost)
   
 
