@@ -1,0 +1,34 @@
+CREATE DATABASE RESTFULAPIDB
+USE DATABASE RESTFULAPIDB
+
+CREATE TABLE users(
+	userId INT IDENTITY(1, 1),
+	userName VARCHAR(10),
+	email VARCHAR(100),
+    password VARCHAR(255)
+
+	PRIMARY KEY(userId)
+);
+
+
+CREATE TABLE posts(
+	postId INT IDENTITY(1, 1),
+	title VARCHAR(10),
+	content VARCHAR(100),
+	userId INT NOT NULL,
+
+	PRIMARY KEY(postId),
+	FOREIGN KEY(userId) REFERENCES users(userId)
+);
+
+CREATE TABLE comments(
+	commentId INT IDENTITY(1, 1),
+	content VARCHAR(10),
+	postId INT NOT NULL,
+	userId INT NOT NULL,
+
+	PRIMARY KEY(postId),
+	FOREIGN KEY(userId) REFERENCES users(userId)
+	FOREIGN KEY(postId) REFERENCES posts(postId)
+
+);
