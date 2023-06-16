@@ -1,15 +1,13 @@
-// import { comment, post } from '../controllers/userController.js';
+import { makeComment, makePost } from './controllers/userController.js';
 import { login, register, loginRequired } from '../controllers/authController.js';
 
 const routes = (app) => {
     //Restricted routes, you have to login first
-    // app.route('/comment')
-    //     .get(loginRequired, getAll)
-    //     .delete(loginRequired, removeStudent)
+    app.route('/comment')
+        .post(loginRequired, makeComment)
 
-    // app.route('/post')
-    //     .put(loginRequired, updateInfo)
-    //     .get(loginRequired, getInfo)
+    app.route('/post')
+        .post(loginRequired, makePost)
   
 
     // open routes
